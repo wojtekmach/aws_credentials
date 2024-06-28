@@ -36,6 +36,7 @@
                   | aws_credentials_file
                   | aws_credentials_ecs
                   | aws_credentials_ec2
+                  | aws_credentials_sts
                   | module().
 -type error_log() :: [{provider(), term()}].
 -export_type([ options/0, expiration/0, provider/0, error_log/0 ]).
@@ -45,8 +46,10 @@
 
 -include_lib("kernel/include/logger.hrl").
 
--define(DEFAULT_PROVIDERS, [aws_credentials_env,
+-define(DEFAULT_PROVIDERS, [
+                            aws_credentials_env,
                             aws_credentials_file,
+                            aws_credentials_sts,
                             aws_credentials_ecs,
                             aws_credentials_ec2]).
 
